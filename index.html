@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Management Dashboard</title>
+    <meta name="description" content="Project Management Dashboard for Telegram Bot" />
+    <meta name="author" content="Project Management Team" />
+
+    <!-- Telegram Web App Meta Tags -->
+    <meta name="theme-color" content="#2563eb" />
+    <meta name="color-scheme" content="light dark" />
+    
+    <!-- Telegram Web App Script -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <meta property="og:title" content="Project Management Dashboard" />
+    <meta property="og:description" content="Manage your projects, tasks, and teams" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@project_management" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Telegram Web App Initialization -->
+    <script>
+      // Initialize Telegram Web App
+      if (window.Telegram && window.Telegram.WebApp) {
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        
+        // Set theme based on Telegram theme
+        if (tg.colorScheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+        
+        // Handle theme changes
+        tg.onEvent('themeChanged', () => {
+          if (tg.colorScheme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
